@@ -56,14 +56,15 @@ struct SidebarView: View {
 
                 HStack(spacing: 4) {
                     Button(action: { self.preferences.shouldShowOnlyActiveDevices.toggle() }, label: {
-                        Image(self.preferences.shouldShowOnlyActiveDevices ? "power_on" : "power_off")
+                        Image("power")
                         .resizable()
-                        .aspectRatio(CGSize(width: 133, height: 137), contentMode: .fit)
-                        .frame(width: 12)
+                        .foregroundColor(self.preferences.shouldShowOnlyActiveDevices ? .accentColor : .secondary)
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 16)
+                        .padding(.horizontal, 2)
                     })
-                    .foregroundColor(self.preferences.shouldShowOnlyActiveDevices ? Color.accentColor : Color.primary)
                     .buttonStyle(BorderlessButtonStyle())
-                    .padding(.leading, 2)
+                    .padding(.leading, 3)
                     FilterField("Filter", text: self.$preferences.filterText)
                 }
                 .padding(2)
